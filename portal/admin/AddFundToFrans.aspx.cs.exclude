@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class portal_admin_AddFundToFrans : System.Web.UI.Page
+{
+    ODBC objOdbc = new ODBC();
+    ClassOther clsother = new ClassOther();
+    clsWallet objWallet = new clsWallet();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if(Session["AdminID"]==null)
+        {
+            Response.Redirect("../../Login.aspx");
+        }
+        if(!IsPostBack)
+        {
+            clsother.filldropdownlist("SELECT fransid, name FROM mlm_franchise WHERE status=1", ddlFranchiese, "name", "fransid");
+            ddlFranchiese.Items.RemoveAt(0);
+            ddlFranchiese.Items.Insert(0, new ListItem("Select Franchise", "0"));
+        }
+    }
+    protected void btnTransfer_Click(object sender, EventArgs e)
+    {
+        try {
+            objOdbc.executeNonQuery("UPDATE mlm_franchise SET credit_amt=credit_amt+'" + txtAmount.Text + "',	current_bal=current_bal+'" + txtAmount.Text + "' WHERE 	fransid='"+ ddlFranchiese.SelectedValue +"' ");
+           
+            objOdbc.executeNonQuery("INSERT INTO mlm_fund_trans_to_franchise(`fransid`, `amount`, `transfer_by`, `transfer_on`) VALUES ('" + ddlFranchiese.SelectedValue + "','" + txtAmount.Text + "','" + Session["AdminID"] + "','" + objWallet.getCurDateTimeString() + "' )");
+
+            double dblCurrentAmt = objOdbc.executeScalar_dbl("SELECT current_bal FROM mlm_franchise WHERE fransid='" + ddlFranchiese.SelectedValue + "'");
+            objOdbc.executeNonQuery("INSERT INTO `mlm_franchise_transaction`(`fransid`,`userid`, `debit_amount`, `credit_amount`, `trans_type`, `current_amt`, `trans_date`, `description`) VALUES (" + ddlFranchiese.SelectedValue + ",0,'" + txtAmount.Text + "',0,1,'" + dblCurrentAmt + "','" + objWallet.getCurDateTimeString() + "','Added Fund')");
+
+            CommonMessages.ShowAlertMessage_Reload("Amount transfered successfully!","FundTransferToFrans.aspx");
+        }
+        catch (Exception ex) { }
+    }
+}

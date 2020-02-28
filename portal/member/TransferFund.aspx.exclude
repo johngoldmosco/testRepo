@@ -1,0 +1,95 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/portal/member/Master.master" AutoEventWireup="true" CodeFile="TransferFund.aspx.cs" Inherits="portal_member_TransferFund" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+     <script lang="javascript" type="text/javascript">
+        function validate() {
+
+            if (document.getElementById("<%=txtAmount.ClientID%>").value == "") {
+                alert("Kindly Enter Request Amount!");
+                document.getElementById("<%=txtAmount.ClientID%>").focus();
+                return false;
+            }
+			if (document.getElementById("<%=txtAmount.ClientID%>").value <= 0 ){
+                alert("Kindly Enter Request Amount greater then Rs 0!");
+                document.getElementById("<%=txtAmount.ClientID%>").focus();
+                return false;
+            }
+
+            return true;
+        }
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb bc-colored bg-theme" id="breadcrumb">
+            <li class="breadcrumb-item ">
+                <a href="overview.aspx">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">E-Wallet</a>
+            </li>
+            <li class="breadcrumb-item active">Transfer Fund</li>
+        </ol>
+
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="card ">
+                            <div class="card-header">
+                                <strong>Transfer </strong>
+                                Fund to Repurchase Wallet
+                            </div>
+                            <div class="card-body text-theme">
+                                <div>                                    
+                                    <div class="form-group">
+                                        <label for="nf-password">Current Balance</label>
+                                        <asp:TextBox runat="server" ID="txtCurBalance" CssClass="form-control" placeholder="Your Current Balance" required="true" Text="0"></asp:TextBox>
+                                        <span class="help-block">Your Current Balance of Pyout Wallet . . .</span>
+                                    </div>
+                                    <div class="form-group">                                        
+                                        <label for="nf-password">Repurchase Wallet Balance</label>
+                                        <asp:TextBox runat="server" ID="txtRepBal" CssClass="form-control" required="true" Enabled="false" Text="0"></asp:TextBox>
+                                        <span class="help-block">Your Repurchase wallet Balance here . . .</span>                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nf-password">Transfer Amount</label>
+                                       <asp:TextBox runat="server" ID="txtAmount" CssClass="form-control"  required="true" onkeypress="return isNumberKey(this)" MaxLength="4" ></asp:TextBox>
+                                        <span class="help-block">Please Enter Here Amount you want to Withdrawal . . .</span>
+                                    </div>                                   
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-sm btn-primary btn-round" Text="Transfer Fund"  OnClientClick="return validate();" OnClick ="btnSubmit_Click"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Terms </strong>
+                                Condition
+                            </div>
+                            <div class="card-body text-theme">
+                                <p class="text-success">- You can only send from your Payout-wallet to Repurchase-wallet for self.</p>                              
+                               
+                                <p class="text-danger">- Please make sure amount before transfer Amount .</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+
+
+
+

@@ -1,0 +1,279 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SiteMaster.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Site Metas -->
+    <title>Life Gold Ecom </title>
+    <meta name="keywords" content="LifeGoldEcom, LifeGold, Ecom, Life, Gold, Life Gold" />
+    <meta name="description" content="LifeGoldEcom, LifeGold, Ecom, Life, Gold, Life Gold" />
+    <meta name="author" content="LifeGoldEcom, LifeGold, Ecom, Life, Gold, Life Gold" />
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/android-icon-48x48.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.html" /> 
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Revolution Loaling Fonts and Icons  -->
+    <link rel="stylesheet" href="js/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <!-- Revolution style Sheets  -->
+    <link rel="stylesheet" href="js/revolution/css/settings.css" />
+    <link rel="stylesheet" href="js/revolution/css/layers.css" />
+    <link rel="stylesheet" href="js/revolution/css/navigation.css" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- Modernizer -->
+    <script src="js/modernizer.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+		.ace-responsive-menu > li > a {     
+			margin: 20px 0px;
+			padding: 5px 15px;
+		}
+	</style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+	
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <!-- Start Top Bar -->
+			<%-- 
+            <div class="top-bar d-none d-md-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <div class="top-box-icon clearfix">
+                                <ul>
+                                    <li><i class="zmdi zmdi-email-open"></i><a href="mailto:info@progkiconsulting.com">info@progkiconsulting.com</a></li>
+                                    <li><i class="zmdi zmdi-phone-in-talk"></i><a href="#">(855) 999-5597</a></li>
+                                    <li><i class="zmdi zmdi-google-maps"></i>
+                                        <p>9090 Avenue of the Moon, New York, NY 2218 US.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="top-box-icon social">
+                                <a href="#"><i class="zmdi zmdi-facebook"></i></a>
+                                <a href="#"><i class="zmdi zmdi-twitter"></i></a>
+                                <a href="#"><i class="zmdi zmdi-google-plus"></i></a>
+                                <a href="#"><i class="zmdi zmdi-pinterest"></i></a>
+                                <a href="#"><i class="zmdi zmdi-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --%>
+            <div class="header top-head">
+                <!-- Start Header Area -->
+                <div id="nav-bar" class="header-area">
+                    <div class="container">
+                        <div class="clearfix">
+                            <div class="float-left">
+                                <div class="logo">
+                                    <a href="index.aspx">
+                                        <img src="images/logo.png" alt="" style="width:230px; height:80px;" /></a>
+                                </div>
+                            </div>
+                            <div class="float-right">
+                                <%--<div class="float-right v-align">
+                            <span class="open-search sb-icon-search">
+                                <a href="#search"><i class="zmdi zmdi-search"></i></a>
+                            </span>
+                        </div>
+                        <div id="search">
+                            <button type="button" class="close"><i class="zmdi zmdi-close"></i></button>
+                            <div>
+                                <input type="search" value="" placeholder="type keyword(s) here" />
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>--%>
+                                <div class="float-right">
+                                    <nav>
+                                        <div class="menu-toggle">
+                                            <h3>Menu</h3>
+                                            <button class="" type="button" id="menu-btn">
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                        </div>
+                                        <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
+                                            <li class=""><a href="index.aspx"><span class="title">Home</span></a></li>
+                                            <li class=""><a href="Legal.aspx"><span class="title">Legal</span></a></li>
+											<li class=""><a href="Gallery.aspx"><span class="title">Gallery</span></a></li>
+                                            <%--<li><a href="index.html"><span class="title">Home</span></a>
+                                        <ul>
+                                            <li><a href="index.html">Home 1</a></li>
+                                            <li><a href="index-2.html">Home 2</a></li>
+                                            <li><a href="index-3.html">Home 3</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="active"><a href="about.html"><span class="title">About Us</span></a></li>
+                                    <li><a href="#"><span class="title">Services</span></a>
+                                        <ul>
+                                            <li><a href="services.html">Services</a></li>
+                                            <li><a href="single-service.html">Single Services</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#"><span class="title">Features</span></a>
+                                        <ul>
+                                            <li><a href="project-1.html">Project 4 Column</a></li>
+                                            <li><a href="project-2.html">Project 3 Column</a></li>
+                                            <li><a href="project-3.html">Project 2 Column</a></li>
+                                            <li><a href="single-project.html">Single Project</a></li>
+                                            <li><a href="gallery.html">Gallery</a></li>
+                                            <li><a href="team.html">Team</a></li>
+                                            <li><a href="review.html">Review</a></li>
+                                            <li><a href="faq.html">FAQ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#"><span class="title">Blog</span></a>
+                                        <ul>
+                                            <li><a href="blog-grid-2.html">Blog 2 grid</a></li>
+                                            <li><a href="blog-grid-3.html">Blog 3 column</a></li>
+                                            <li><a href="blog-side.html">Blog Sidebar</a></li>
+                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>--%>
+                                            <li class=""><a href="contactus.aspx"><span class="title">Contact Us</span></a></li>
+                                            <li class=""><a href="Login.aspx"><span class="title">Login</span></a></li>
+                                            <li class=""><a href="Register.aspx"><span class="title">Register</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Header Area -->
+
+
+            </div>
+            <!-- End Top Bar -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <div class="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget-footer">
+                                <div class="footer-logo">
+                                    <img src="images/footer-logo.png" alt="" style="background-color: white; width:230px; height:100px;" />
+                                </div>
+                                <div class="footer-description">
+                                    <p>Lifegold Ecom Pvt. Ltd. is one of the best direct affiliate programs selling companies founded In Maharashtra in India. Lifegold Ecom Pvt. Ltd. deals in Holiday Vouchers, Domestic Tour, International Tour, and Online Shopping Portal.</p>
+                                </div>
+                                <div class="footer-socials">
+                                    <ul>
+                                        <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                        <li><a href="#"><i class="zmdi zmdi-skype"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget-footer-nav">
+                                <h3>Important Link</h3>
+                                <ul>
+                                    <li><a href="index.aspx">Home</a></li>
+                                    <li><a href="Legal.aspx">Legal</a></li>
+                                    <li><a href="Gallery.aspx">Gallery</a></li>
+                                    <li><a href="ContactUs.aspx">Contact Us</a></li>
+                                    <li><a href="Login.aspx">Login</a></li>
+                                    <li><a href="Register.aspx">Register</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-12">
+						<div class="widget-footer">
+                                <div class="widget-footer-nav text-white">
+                                    <h3 class="text-white">Contact Us</h3>
+                                </div>
+                                <div class="footer-description">
+                                    <p>LIFEGOLD ECOM PVT. LTD.
+										ADDRESS : GOLD WINGS
+										SECOND FLOOR
+										COMERCIAL COMPLEX <br />
+										SINHGAD ROAD OPP. ROHAN KIRTIKA BUILDING
+										ABOVE DARSHAN TYERS <br />
+										SINHGAD ROAD PUNE PIN - 411030
+									</p>
+                                </div>
+                                 
+                            </div>
+                            
+                        </div>
+						<div class="col-lg-3 col-sm-6">
+                            <div class="widget-footer"> 
+                                <div class="widget-footer-nav text-white">
+                                    <h3 class="text-white">Bank Details</h3>
+                                </div>
+                                <div class="footer-description">
+                                    <p>
+										Bank Name : Axis Bank <br />
+										Account No. : 918020070735431 <br />
+										IFSC : UTIB0000B2B <br />
+										Address : Sinhgad road, Pune (MH). 411030 <br />
+									</p>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-main">
+                    <div class="container">
+                        <div class="copyright">
+                            <p><a href="#" target="_blank" rel="noopener noreferrer"> LifeGold Ecom Pvt. Ltd. </a> &copy; 2019. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Footer -->
+            <a href="#" id="scroll-to-top" title="Scroll to top"><i class="zmdi zmdi-chevron-up"></i></a>
+        </div>
+    </form>
+    <!-- All Js Files -->
+    <script src="js/all.js"></script>
+    <!-- Revolution Js Files -->
+    <script src="js/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="js/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="js/slider-setting.js"></script>
+    <!-- Slider Revolution 5.0 Extensions -->
+    <script src="js/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="js/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="js/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="js/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="js/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="js/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="js/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="js/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="js/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <!-- End Revolution Slider Extensions -->
+    <!-- All Plugins -->
+    <script src="js/custom.js"></script>
+</body>
+</html>

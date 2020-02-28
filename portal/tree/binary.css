@@ -1,0 +1,236 @@
+/*Now the CSS*/
+* {margin: 0; padding: 0;}
+
+.tree ul {
+	padding-top: 20px; position: relative;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+.tree li::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+
+.tree li:first-child::before, .tree li:last-child::after{
+	border: 0 none;
+}
+
+/*Adding back the vertical connector to the last nodes*/
+
+.tree li:last-child::before{
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+
+.tree ul ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+	border: 1px solid #ccc;
+	padding:3px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 11px;
+	display: inline-block;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: #c8e4f8; border: 1px solid #94a0b4;
+}
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after, 
+.tree li a:hover+ul li::before, 
+.tree li a:hover+ul::before, 
+.tree li a:hover+ul ul::before{
+	border-color:  #94a0b4;
+}
+#pup {
+position:absolute;
+z-index:200; /* aaaalways on top*/
+padding: 3px;
+margin-left: 10px;
+margin-top: 5px;
+color: #fff;
+font-size: 0.95em;
+}
+
+
+.hidden-table
+{
+padding: 3px;
+margin-left: 10px;
+margin-top: 5px;
+border: 1px solid black;
+background: #777;
+color:#000;
+width:360px;
+}
+
+.hidden-table td{
+	padding:0 10px 0 10px;
+	margin:0;
+}
+ .tree a.red
+ {
+/*padding :40px 10px 5px 10px ;*/
+background: rgb(255,26,0); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,26,0,1) 0%, rgba(255,26,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,26,0,1)), color-stop(100%,rgba(255,26,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(255,26,0,1) 0%,rgba(255,26,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(255,26,0,1) 0%,rgba(255,26,0,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(255,26,0,1) 0%,rgba(255,26,0,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(255,26,0,1) 0%,rgba(255,26,0,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1a00', endColorstr='#ff1a00',GradientType=0 ); /* IE6-9 */
+}
+.tree a.green
+{
+padding :40px 10px 5px 10px ;
+background: #80FF00; /* Old browsers */
+background: -moz-linear-gradient(top, rgba(100,209,41,1) 0%, rgba(22,191,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,209,41,1)), color-stop(100%,rgba(22,191,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(100,209,41,1) 0%,rgba(22,191,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(100,209,41,1) 0%,rgba(22,191,0,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(100,209,41,1) 0%,rgba(22,191,0,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(100,209,41,1) 0%,rgba(22,191,0,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d129', endColorstr='#16bf00',GradientType=0 ); /* IE6-9 */
+}
+.tree a.light_green
+{
+padding :40px 10px 5px 10px ;
+background: #336600; /* Old browsers */
+background: -moz-linear-gradient(top, #2EFE2E 0%, #2EFE2E 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,209,41,1)), color-stop(100%,#2EFE2E)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #2EFE2E 0%,#2EFE2E 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #2EFE2E 0%,#2EFE2E 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #2EFE2E 0%,#2EFE2E 100%); /* IE10+ */
+background: linear-gradient(to bottom, #2EFE2E 0%,#2EFE2E 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d129', endColorstr='#16bf00',GradientType=0 ); /* IE6-9 */
+}
+.tree a.yellow
+{
+padding :40px 10px 5px 10px ;
+background: #FFFF00; /* Old browsers */
+background: -moz-linear-gradient(top, #F4FA58 0%, #F4FA58 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F4FA58), color-stop(100%,#F4FA58)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #F4FA58 0%,#F4FA58 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #F4FA58 0%,#F4FA58 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #F4FA58 0%,#F4FA58 100%); /* IE10+ */
+background: linear-gradient(to bottom, #F4FA58 0%,#F4FA58 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d129', endColorstr='#16bf00',GradientType=0 ); /* IE6-9 */
+}
+.tree a.dark_pink
+{
+padding :40px 10px 5px 10px ;
+background: #CC00CC; /* Old browsers */
+background: -moz-linear-gradient(top, rgba(100,209,41,1) 0%, #FA58F4 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FA58F4), color-stop(100%,#FA58F4)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #FA58F4 0%,#FA58F4 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #FA58F4 0%,#FA58F4 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #FA58F4 0%,#FA58F4 100%); /* IE10+ */
+background: linear-gradient(to bottom, #FA58F4 0%,#FA58F4 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d129', endColorstr='#16bf00',GradientType=0 ); /* IE6-9 */
+}
+.tree a.dark_yellow
+{
+padding :40px 10px 5px 10px ;
+background: #999900; /* Old browsers */
+background: -moz-linear-gradient(top, #688A08 0%, #688A08 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#688A08), color-stop(100%,#688A08)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #688A08 0%,#688A08 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #688A08 0%,#688A08 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #688A08 0%,#688A08 100%); /* IE10+ */
+background: linear-gradient(to bottom, #688A08 0%,#688A08 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d129', endColorstr='#16bf00',GradientType=0 ); /* IE6-9 */
+}
+.tree a.violet
+{
+padding :40px 10px 5px 10px ;
+background: #990099; /* Old browsers */
+background: -moz-linear-gradient(top, rgba(100,209,41,1) 0%, #A901DB 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#A901DB), color-stop(100%,#A901DB)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #A901DB 0%,#A901DB 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #A901DB 0%,#A901DB 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #A901DB 0%,#A901DB 100%); /* IE10+ */
+background: linear-gradient(to bottom, #A901DB 0%,#A901DB 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d129', endColorstr='#16bf00',GradientType=0 ); /* IE6-9 */
+}
+.tree a.brown
+{
+padding :40px 10px 5px 10px ;
+background: #990000; /* Old browsers */
+background: -moz-linear-gradient(top, #8A4B08 0%, #8A4B08 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8A4B08), color-stop(100%,#8A4B08)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #8A4B08 0%,#8A4B08 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #8A4B08 0%,#8A4B08 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #8A4B08) 0%,#8A4B08 100%); /* IE10+ */
+background: linear-gradient(to bottom, #8A4B08) 0%,#8A4B08 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d129', endColorstr='#16bf00',GradientType=0 ); /* IE6-9 */
+}
+.tree a.black
+{
+padding :40px 10px 5px 10px ;
+background-color : #FADC1A ;
+}
+
+.tree a.blue
+{
+padding :40px 10px 5px 10px ;
+background-color:#000099;
+}
